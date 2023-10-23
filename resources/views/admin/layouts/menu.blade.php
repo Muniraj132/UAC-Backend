@@ -1,7 +1,14 @@
+
+<style>
+  ul li a{
+    color: white !important;
+  }
+</style>
+
 <aside class="main-sidebar sidebar-dark-primary elevation-4" style="background-color: #47a3a5;">
     <!-- Brand Logo -->
  
-    <a href="{{route('admin.home')}}" class="brand-link" style="text-align:justify">
+    <a href="{{route('admin.home')}}" class="brand-link" style="text-align:justify; color:white;">
     <img src="{{asset('admin')}}/img/leftlogo.png" alt="HasPanel Logo" class="brand-image img-circle elevation-3" style="opacity: .8;">
      <strong class="brand-text font-weight-light" style=""> <span style="color: black;font-weight: 700;">UAC</span>&nbsp;<b>Family India</b></strong>
     </a>

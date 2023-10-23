@@ -47,16 +47,20 @@ class FileController extends Controller
     public function store(Request $request)
     {
         try {
-            foreach ($request->input('document', []) as $file) {
-                $medias = new File();
-                $medias->role = Auth::user()->role;
-                $medias->addMedia(storage_path('tmp/uploads/' . $file))->toMediaCollection();
-                $medias->save();
+            if($request->document){
+                foreach ($request->input('document', []) as $file) {
+                    $medias = new File();
+                    $medias->role = Auth::user()->role;
+                    $medias->addMedia(storage_path('tmp/uploads/' . $file))->toMediaCollection();
+                    $medias->save();
+                }
+                $target = storage_path('tmp/uploads');
+                delete_files($target);
+                $medias = File::orderBy('created_at', 'desc')->where('collection','=','default')->simplePaginate(20);
+                return redirect()->route('admin.media.index')->with(['type' => 'success', 'message' =>'Medias saved.']);
+            }else{
+                return redirect()->back()->with(['type' => 'error', 'message' =>'The Media is Required']);
             }
-            $target = storage_path('tmp/uploads');
-            delete_files($target);
-            $medias = File::orderBy('created_at', 'desc')->where('collection','=','default')->simplePaginate(20);
-            return redirect()->route('admin.media.index')->with(['type' => 'success', 'message' =>'Medias saved.']);
         } catch (Throwable $th) {
             Log::create([
                 'model' => 'file',

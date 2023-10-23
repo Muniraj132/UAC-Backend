@@ -37,6 +37,7 @@
                         </div>
                     </div>
                     <div class="card-footer">
+                      <a href="{{ route('admin.gallery.index') }}" class="btn btn-danger">Cancel</a>
                         <button class="btn btn-success text-center px-5" type="submit" id="submit">{{ __('main.Upload') }}</button>
                     </div>
                 </form>

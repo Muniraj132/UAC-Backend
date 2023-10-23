@@ -49,15 +49,20 @@ class GalleryController extends Controller
     {
         
         try {
-            foreach ($request->input('document', []) as $image) {
+            if($request->document){
+                foreach ($request->input('document', []) as $image) {
                
-                $newImage = new Image;
-                $newImage->name = $image;
-                $newImage->path = 'uploads/'.$image;
-                // $newImage->item_id = $request->item_id; 
-                $newImage->save();
+                    $newImage = new Image;
+                    $newImage->name = $image;
+                    $newImage->path = 'uploads/'.$image;
+                    // $newImage->item_id = $request->item_id; 
+                    $newImage->save();
+                }
+                return redirect()->route('admin.gallery.index')->with(['type' => 'success', 'message' =>'Medias saved.']);
+            }else{
+                return redirect()->back()->with(['type' => 'error', 'message' =>'The gallery is required']);
             }
-            return redirect()->route('admin.gallery.index')->with(['type' => 'success', 'message' =>'Medias saved.']);
+            
         } catch (Throwable $th) {
             Log::create([
                 'model' => 'file',

@@ -112,6 +112,7 @@
                             <div class="card-body">
                                 <a href="javascript:void(0);" class="btn btn-success btn-sm float-right"
                                     id="submit">{{ __('main.Save') }}</a>
+                                    <a href="{{ route('admin.category.index') }}" class="btn btn-danger btn-sm float-right mr-2">Cancel</a>
                             </div>
                         </div>
                     </div>

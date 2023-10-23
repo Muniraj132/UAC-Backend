@@ -125,8 +125,11 @@
                         </div>
                         <div class="card" id="save-card">
                             <div class="card-body">
+                               
                                 <a href="javascript:void(0);" class="btn btn-success btn-sm float-right"
                                     id="submit">{{ __('main.Save') }}</a>
+                                    
+                                    <a href="{{ route('admin.page.index') }}" class="btn btn-danger btn-sm float-right mr-2">Cancel</a>
                             </div>
                         </div>
                     </div>
