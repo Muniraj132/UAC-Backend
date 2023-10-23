@@ -14,7 +14,7 @@ If git is not installed on your computer, install the appropriate one for your o
 - Open the terminal screen and paste the code below and run it.
 
   ```
-  git clone https://github.com/Muniraj132/laravel-backend-cms.git
+  git clone https://github.com/Muniraj132/UAC-Backend.git
   ```
 ## Installation
 
