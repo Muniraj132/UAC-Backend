@@ -5,17 +5,21 @@
   {{-- <link rel="icon" sizes="48x48" href="{{App\Models\File::find(App\Models\Option::where('key','=','favicon')->first()->value)->getMedia()->first()->getUrl('thumb')}}" type="image/x-icon" /> --}}
   <link rel="icon" href="{{asset('admin')}}/img/leftlogo.png" type="image/x-icon" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>St.Charles {{ __('main.Login') }}</title>
+  <title>St.Charles | {{ __('main.Login') }}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <link rel="stylesheet" href="{{asset('admin')}}/plugins/fontawesome-free/css/all.min.css">
   <link rel="stylesheet" href="{{asset('admin')}}/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
   <link rel="stylesheet" href="{{asset('admin')}}/dist/css/adminlte.min.css">
 </head>
-<body class="hold-transition login-page" style="background-color:#6b1d2f;">
+<body class="hold-transition login-page" style="background-color: #21d7d9;" >
 <div class="login-box">
     <div class="register-logo">
-      <a href="{{url('/')}}" style="color: rgb(246, 201, 63);"><b>St.Charles Borromeo</b></a>
+      <img src="{{asset('admin')}}/img/leftlogo.png" alt="UAC-logo" style="width: 30%;"><br>
+     
+     <center><a href="{{url('/')}}" style="color: white
+      ; font-weight:500;"><b>National Coordination Council India</b>
+      <img src="{{asset('admin')}}/img/12.gif" style="width: 10%;" alt=""></a></center>
     </div>
   <div class="card">
     <div class="card-body login-card-body">
@@ -67,9 +71,9 @@
       <p class="mb-1">
         <a href="#">Şifremi Unuttum</a>
       </p>-->
-      <p class="mb-0">
+      {{-- <p class="mb-0">
         <a href="{{route('register.user')}}" class="text-center">{{ __('main.Register') }}</a>
-      </p>
+      </p> --}}
     </div>
   </div>
 </div>

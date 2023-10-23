@@ -13,7 +13,7 @@
 </head>
 
 
-<body class="hold-transition register-page" style="background-color:#6b1d2f;">
+ <body class="hold-transition register-page" style="background-color:#21d7d9;">
     <div class="register-box">
       <div class="register-logo">
         <a href="{{url('/')}}" style="color: rgb(246, 201, 63);"><b>St.Charles Borromeo</b></a>

@@ -17,7 +17,7 @@
   width: min(400px , 100%);
   border-radius: 10px;
   background-color: #8ec5fc;
-  background-image: linear-gradient(62deg, #6b1d2f 0%, #202124 100%);
+  background-image: linear-gradient(62deg, #21d7d9 0%, #3d4647 100%);
   transition-property: opacity, transform;
   transition-duration: calc(700ms);
   transition-delay: 0s;
@@ -29,10 +29,6 @@
 }
 
 .profile-name {
-  /* position: absolute;
-            bottom: 4px;
-            left: 50%;
-            transform: translateX(-50%); */
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -40,12 +36,7 @@
   justify-content: center;
 }
 
-.profile-name h4,
-p {
-  margin: 0;
-  color: white;
-  text-align: center;
-}
+
 
 .profile-name h4 {
   /* font-size: 16px; */
@@ -94,8 +85,8 @@ p {
             <div class="details">
                 <div class="profile-name">
                     <h4>{{$auth->name." ".$auth->surname }}</h4>
-                    <p>{{ $auth->email }}</p>
-                    <p>{{ $auth->role }}</p>
+                    <p style="color: white;">{{ $auth->email }}</p>
+                    <p style="color: white;">{{ $auth->role }}</p>
                 </div>
             </div>
         </div>
