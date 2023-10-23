@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('seo_title')</title>
+    <title> @yield('seo_title')</title>
     <meta name="description" CONTENT="@yield('seo_description')">
     <meta name="robots" content="@if ($option['no_index']==1) noindex @else @yield('no_index') @endif,@if ($option['no_follow'] == 1)nofollow @else @yield('no_follow')@endif">
     <meta name="googlebot" content="@if ($option['no_index']==1) noindex @else @yield('no_index') @endif,@if ($option['no_follow'] == 1)nofollow @else @yield('no_follow')@endif" />
