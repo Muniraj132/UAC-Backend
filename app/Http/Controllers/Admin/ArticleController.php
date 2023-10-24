@@ -120,7 +120,7 @@ class ArticleController extends Controller
             'no_index' => 'nullable|in:on',
             'no_follow' => 'nullable|in:on',
             'media_id' => 'nullable|numeric|min:1',
-            'category_id' => 'nullable|numeric|min:1',
+            'category' => 'nullable|numeric|min:1',
         ]);
         try {
             $article->getSlug()->update([
@@ -134,7 +134,7 @@ class ArticleController extends Controller
 
             $article->update([
                 'media_id' => $request->media_id ?? 1,
-                'category_id' => $request->category_id ?? 1,
+                'category_id' => $request->category ?? 1,
                 'title' => $request->title,
                 'content' => $request->content,
                 'language' => $request->language,

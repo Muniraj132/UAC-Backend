@@ -48,18 +48,19 @@ class ApiController extends Controller
       return response()->json('request sent sucessfully');
       
     }
-    public function getpostdata(){
-       
+    public function getpostdata($id){  
         $articles = Article::select(
             'articles.title',
             'articles.id',
             'articles.content',
             'articles.media_id',
             'articles.created_at',
-            'categories.title as category_name'
+            'categories.title as category_name',
+             'categories.content as category_description'
         )
             ->leftJoin('categories', 'articles.category_id', '=', 'categories.id')
             ->where('articles.status', 1)
+            ->where('categories.id', $id)
             ->get();
         
         $articles->each(function ($article) {
@@ -67,7 +68,7 @@ class ApiController extends Controller
           $media = Media::find($article->media_id);
         
             if ($media) {
-                $mediaUrl = $media->getUrl('thumb');
+                $mediaUrl = $media->getUrl();
             }
             if($article->media_id != 1){
                 $article->image = $mediaUrl;
@@ -75,10 +76,11 @@ class ApiController extends Controller
             
             $article->date = $article->created_at->format('d-m-Y');
         });
-       
         return response()->json([
             'success' => true,
             'message' => 'Data retrieved successfully',
+            'category_name'=> $articles[0]->category_name,
+            'category_description'=> $articles[0]->category_description,
             'data' => $articles,
         ]);
         

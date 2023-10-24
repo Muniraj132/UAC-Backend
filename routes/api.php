@@ -19,7 +19,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::Post('/store/contact',[ApiController::class,'storecontact']);
-Route::get('/get/post',[ApiController::class,'getpostdata']);
+Route::get('/get/post/{id}',[ApiController::class,'getpostdata']);
 Route::get('/get/slider',[ApiController::class,'getsliderimages']);
 Route::get('/get/Newsletter',[ApiController::class,'getnewsletter']);
 Route::get('/get/Pages',[ApiController::class,'getpage']);
