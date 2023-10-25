@@ -7,7 +7,7 @@
     </div>
     <!-- Default to the left -->
     <center>
-    <strong>{{ __('main.Copyright') }} &copy; 2023 <a href="/admin/home">National Coordination Council India  </a>.</strong> {{ __('main.All rights reserved.') }}
+    <strong>{{ __('main.Copyright') }} &copy; {{ date('Y') }} <a href="/admin/home">National Coordination Council India  </a>.</strong> {{ __('main.All rights reserved.') }}
 </center>
     </footer>
 </div>
