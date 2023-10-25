@@ -121,6 +121,7 @@ class NewsletterController extends Controller
     public function update(Request $request, Newsletter $newsletter)
     {
         
+        
         $data =$newsletter->all();
         foreach ($data as $key => $value) {
             $article = $value;
@@ -132,9 +133,8 @@ class NewsletterController extends Controller
             'no_index' => 'nullable|in:on',
             'no_follow' => 'nullable|in:on',
             'media_id' => 'nullable|numeric|min:1',
-            'category_id' => 'nullable|numeric|min:1',
+            'category' => 'nullable|numeric|min:1',
         ]);
-       
         try {
             $article->getSlug()->update([
                 'slug' => slugCheck($request->slug, $article->slug_id),
@@ -144,6 +144,7 @@ class NewsletterController extends Controller
                 'no_index' => $request->no_index=='on' ? 1 : 0,
                 'no_follow' => $request->no_follow=='on' ? 1 : 0,
             ]);
+            
             $file = $request->file('file_id');
             if ($file != null) {
                 
@@ -151,7 +152,7 @@ class NewsletterController extends Controller
                 $article->update([
                     'media_id' => $request->media_id ?? 1,
                     'file_id' => $filename,
-                    'category_id' => $request->category_id ?? 1,
+                    'category_id' => $request->category ?? 1,
                     'title' => $request->title,
                     'content' => $request->content,
                     'language' => $request->language,
@@ -161,7 +162,7 @@ class NewsletterController extends Controller
             }else{
                 $article->update([
                     'media_id' => $request->media_id ?? 1,
-                    'category_id' => $request->category_id ?? 1,
+                    'category_id' => $request->category ?? 1,
                     'title' => $request->title,
                     'content' => $request->content,
                     'language' => $request->language,
