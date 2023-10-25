@@ -146,7 +146,7 @@ class CategoryController extends Controller
                 'language' => $request->language,
             ]);
 
-            return redirect()->route('admin.category.edit', $category->id)->with(['type' => 'success', 'message' => 'Category Updated.']);
+            return redirect()->route('admin.category.index')->with(['type' => 'success', 'message' => 'Category Updated.']);
         } catch (Throwable $th) {
             Log::create([
                 'model' => 'category',
