@@ -1,11 +1,18 @@
-
+<style>
+  .dropdown-item{
+    background-color: #17a2b8;
+  }
+  .dropdown-item:focus, .dropdown-item:hover{
+    background-color: #ffd700;
+  }
+</style>
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars" style="color: #47a3a5;"></i></a>
       </li>
-      <li class="nav-item dropdown d-none d-sm-inline-block">
+      <li class="nav-item dropdown d-none d-sm-inline-block" style="color: #47a3a5;">
         <a id="dropdownSubMenu2" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-item dropdown-toggle">{{ __('main.Add New') }}</a>
         <ul aria-labelledby="dropdownSubMenu2" class="dropdown-menu border-0 shadow">
             <li><a href="{{route('admin.page.create')}}" class="dropdown-item">{{ __('main.Page') }}</a></li>
@@ -21,8 +28,8 @@
     <ul class="navbar-nav ml-auto">
       <!-- Notifications Dropdown Menu -->
       <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="dropdown" href="#">
-          <i class="far fa-bell"></i>
+        <a class="nav-link mt-2"  data-toggle="dropdown" href="#">
+          <i class="far fa-bell" style="color: #47a3a5;"></i>
           <span class="badge badge-warning navbar-badge">0</span>
         </a>
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
