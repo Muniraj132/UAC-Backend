@@ -7,6 +7,7 @@ use App\Models\Option;
 use App\Models\Widget;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\URL;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -27,6 +28,17 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+
+        $this->app['request']->server->set('HTTPS', $this->app->environment() != 'local');
+        
+        if ($this->app->environment('production')) {
+            URL::forceScheme('https');
+        }
+
+        if (env('APP_FORCE_HTTPS', false)) {
+            URL::forceScheme('https');
+        }
+         
         view()->composer('admin.layouts.master',function($view){
             $view->with([
                 'auth'=>Auth::user(),

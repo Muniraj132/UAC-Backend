@@ -47,11 +47,9 @@ class GalleryController extends Controller
 
     public function store(Request $request)
     {
-        
         try {
             if($request->document){
                 foreach ($request->input('document', []) as $image) {
-               
                     $newImage = new Image;
                     $newImage->name = $image;
                     $newImage->path = 'uploads/'.$image;
@@ -157,17 +155,22 @@ class GalleryController extends Controller
     public function storeMedia(Request $request)
     {
         try {
-           
             $file = $request->file('file');
-            $imageName = time() . '.' . $file->extension();
             $path = 'uploads/';
             $name = uniqid() . '_' . trim($file->getClientOriginalName());
+            
+            // Check if the 'uploads/' directory exists, and create it if not
+            if (!file_exists($path)) {
+                mkdir($path, 0755, true); // The third parameter 'true' creates nested directories if needed.
+            }
+            
             $file->move($path, $name);
-
+            
             return response()->json([
                 'name'          => $name,
                 'original_name' => $file->getClientOriginalName(),
             ]);
+    
         } catch (Throwable $th) {
             Log::create([
                 'model' => 'file',

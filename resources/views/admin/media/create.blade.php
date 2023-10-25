@@ -50,36 +50,44 @@
 
 @section('script')
 <script>
-  var uploadedDocumentMap = {}
-  Dropzone.options.documentDropzone = {
-    url: '{{ route('admin.media.storeMedia') }}',
-    maxFilesize: 50, // MB
-    addRemoveLinks: true,/*
-	dictDefaultMessage: "Dosyaları yüklemek için buraya bırakın",
-	dictFallbackMessage: "Tarayıcınız drag'n'drop dosya yüklemelerini desteklemiyor.",
-	dictFallbackText: "Dosyalarınızı eski günlerdeki gibi yüklemek için lütfen aşağıdaki geri dönüş formunu kullanın.",
-	dictInvalidFileType: "Bu türdeki dosyaları yükleyemezsiniz.",
-	dictCancelUpload: "Yüklemeyi iptal et",
-	dictCancelUploadConfirmation: "Bu yüklemeyi iptal etmek istediğinizden emin misiniz?",
-	dictRemoveFile: "Dosyayı kaldır",
-	dictMaxFilesExceeded: "Daha fazla dosya yükleyemezsiniz.",*/
-    headers: {
-      'X-CSRF-TOKEN': "{{ csrf_token() }}"
-    },
-    success: function (file, response) {
-      $('form').append('<input type="hidden" name="document[]" value="' + response.name + '">')
-      uploadedDocumentMap[file.name] = response.name
-    },
-    removedfile: function (file) {
-      file.previewElement.remove()
-      var name = ''
-      if (typeof file.file_name !== 'undefined') {
-        name = file.file_name
-      } else {
-        name = uploadedDocumentMap[file.name]
-      }
-      $('form').find('input[name="document[]"][value="' + name + '"]').remove()
-    },
-  }
+  var uploadedDocumentMap = {};
+
+// Generate the secure URL using secure_url function
+var secureUrl = "{{ secure_url(route('admin.media.storeMedia')) }}";
+
+// Configure Dropzone with the secure URL
+Dropzone.options.documentDropzone = {
+  url: secureUrl,
+  maxFilesize: 50, // MB
+  addRemoveLinks: true,
+  /*
+  dictDefaultMessage: "Dosyaları yüklemek için buraya bırakın",
+  dictFallbackMessage: "Tarayıcınız drag'n'drop dosya yüklemelerini desteklemiyor.",
+  dictFallbackText: "Dosyalarınızı eski günlerdeki gibi yüklemek için lütfen aşağıdaki geri dönüş formunu kullanın.",
+  dictInvalidFileType: "Bu türdeki dosyaları yükleyemezsiniz.",
+  dictCancelUpload: "Yüklemeyi iptal et",
+  dictCancelUploadConfirmation: "Bu yüklemeyi iptal etmek istediğinizden emin misiniz?",
+  dictRemoveFile: "Dosyayı kaldır",
+  dictMaxFilesExceeded: "Daha fazla dosya yükleyemezsiniz.",
+  */
+  headers: {
+    'X-CSRF-TOKEN': "{{ csrf_token() }}"
+  },
+  success: function (file, response) {
+    $('form').append('<input type="hidden" name="document[]" value="' + response.name + '">')
+    uploadedDocumentMap[file.name] = response.name;
+  },
+  removedfile: function (file) {
+    file.previewElement.remove();
+    var name = '';
+    if (typeof file.file_name !== 'undefined') {
+      name = file.file_name;
+    } else {
+      name = uploadedDocumentMap[file.name];
+    }
+    $('form').find('input[name="document[]"][value="' + name + '"]').remove();
+  },
+};
+
 </script>
 @endsection

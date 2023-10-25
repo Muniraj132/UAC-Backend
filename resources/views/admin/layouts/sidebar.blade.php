@@ -61,7 +61,12 @@
   padding-bottom: 10px;
 }
 
-
+.logoutsty{
+  color: #ffd700;
+}
+.logoutsty:hover{
+  color: #007bff;
+}
 
 .socails {
     display: flex;
@@ -84,9 +89,16 @@
             </div>
             <div class="details">
                 <div class="profile-name">
-                    <h4>{{$auth->name." ".$auth->surname }}</h4>
+                    <h4 style="color: white;">{{$auth->name." ".$auth->surname }}</h4>
                     <p style="color: white;">{{ $auth->email }}</p>
                     <p style="color: white;">{{ $auth->role }}</p>
+                    <form action="{{route('logout')}}" method="POST">
+                      @csrf
+                      <a href="{{route('logout')}}" class="nav-link logoutsty" onclick="event.preventDefault(); this.closest('form').submit();">
+                        <i class="nav-icon fas fa-power-off"></i>
+                        {{ __('main.Logout') }}
+                      </a>
+                    </form>
                 </div>
             </div>
         </div>

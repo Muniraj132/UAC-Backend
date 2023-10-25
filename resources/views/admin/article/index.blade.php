@@ -88,13 +88,21 @@
 
 @section('script')
     <script>
-        $('.switch').change(function() {
-            id = $(this).attr('data-id');
-            status = $(this).prop('checked');
-            $.get("{{ route('admin.article.switch') }}", {
-                id: id,
-                status: status
-            })
-        })
+        // $('.switch').change(function() {
+        //     id = $(this).attr('data-id');
+        //     status = $(this).prop('checked');
+        //     $.get("{{ route('admin.article.switch') }}", {
+        //         id: id,
+        //         status: status
+        //     })
+        // })
+          $('.switch').change(function() {
+        id = $(this).attr('data-id');
+        status = $(this).prop('checked');
+        $.get("{{ secure_url(route('admin.article.switch')) }}", {
+            id: id,
+            status: status
+        });
+    });
     </script>
 @endsection

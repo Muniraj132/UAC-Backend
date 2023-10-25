@@ -52,8 +52,12 @@
                             <tbody>
                                 @foreach ($articles as $article)
                                     <tr>
-                                        <td><img src="{{ $article->getMedia->id == 1 ? '' : $article->getMedia->getUrl('thumb') }}"
-                                                alt="" style="height: 24px"></td>
+                                        <td>
+                                            @if ($article->getMedia)
+                                            <img src="{{ $article->getMedia->id == 1 ? '' : $article->getMedia->getUrl('thumb') }}" alt=""
+                                            style="height: 54px">
+                                            @endif
+                                            </td>
                                         <td>{{ $article->title }}</td>
                                         <td>{{ $article->getSlug->slug }}</td>
                                         <td>{{ $article->getCategory->title }}</td>

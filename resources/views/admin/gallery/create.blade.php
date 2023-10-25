@@ -50,29 +50,32 @@
 
 @section('script')
 <script>
-  var uploadedDocumentMap = {}
-  Dropzone.options.documentDropzone = {
-    url: '{{ route('admin.gallery.storeMedia') }}',
-    maxFilesize: 50, // MB
-    addRemoveLinks: true,
-    headers: {
-      'X-CSRF-TOKEN': "{{ csrf_token() }}"
-    },
-    success: function (file, response) {
-      console.log(response.name);
-      $('form').append('<input type="hidden" name="document[]" value="' + response.name + '">')
-      uploadedDocumentMap[file.name] = response.name
-    },
-    removedfile: function (file) {
-      file.previewElement.remove()
-      var name = ''
-      if (typeof file.file_name !== 'undefined') {
-        name = file.file_name
-      } else {
-        name = uploadedDocumentMap[file.name]
-      }
-      $('form').find('input[name="document[]"][value="' + name + '"]').remove()
-    },
-  }
+  var uploadedDocumentMap = {};
+  var secureUrl =  "{{ secure_url(route('admin.gallery.storeMedia')) }}";
+
+Dropzone.options.documentDropzone = {
+  url: secureUrl, 
+  maxFilesize: 50, 
+  addRemoveLinks: true,
+  headers: {
+    'X-CSRF-TOKEN': "{{ csrf_token() }}"
+  },
+  success: function (file, response) {
+    console.log(response.name);
+    $('form').append('<input type="hidden" name="document[]" value="' + response.name + '">');
+    uploadedDocumentMap[file.name] = response.name;
+  },
+  removedfile: function (file) {
+    file.previewElement.remove();
+    var name = '';
+    if (typeof file.file_name !== 'undefined') {
+      name = file.file_name;
+    } else {
+      name = uploadedDocumentMap[file.name];
+    }
+    $('form').find('input[name="document[]"][value="' + name + '"]').remove();
+  },
+};
+
 </script>
 @endsection

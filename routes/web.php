@@ -2,7 +2,7 @@
 
 use App\Models\Page;
 use Illuminate\Support\Facades\Route;
-
+URL::forcescheme('https');
 
 // Route::get('/', function () {
 //     $page = Page::find(1);

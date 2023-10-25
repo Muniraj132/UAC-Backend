@@ -52,16 +52,16 @@ class NewsletterController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'title' => 'required|min:3|max:255',
-            'slug' => 'required|min:3|max:255',
-            'file_id' => 'required',
-            'language' => 'required',
-            'no_index' => 'nullable|in:on',
-            'no_follow' => 'nullable|in:on',
-            'media_id' => 'nullable|numeric|min:1',
-            'category_id' => 'nullable|numeric|min:1',
-        ]);
+        // $request->validate([
+        //     'title' => 'required|min:3|max:255',
+        //     'slug' => 'required|min:3|max:255',
+        //     'file_id' => 'required',
+        //     'language' => 'required',
+        //     'no_index' => 'nullable|in:on',
+        //     'no_follow' => 'nullable|in:on',
+        //     'media_id' => 'nullable|numeric|min:1',
+        //     'category_id' => 'nullable|numeric|min:1',
+        // ]);
         try {
            
             $slug = Slug::create([
@@ -86,7 +86,7 @@ class NewsletterController extends Controller
             ]);
             $destinationPath ="newletter";
             $file->move($destinationPath, $filename);
-            return redirect()->route('admin.newletter.index')->with(['type' => 'success', 'message' =>'Post Saved.']);
+            return redirect()->route('admin.newletter.index')->with(['type' => 'success', 'message' =>'NewsLetter Saved.']);
         } catch (Throwable $th) {
             Log::create([
                 'model' => 'article',
@@ -120,7 +120,7 @@ class NewsletterController extends Controller
 
     public function update(Request $request, Newsletter $newsletter)
     {
-        // dd($request->all());
+        
         $data =$newsletter->all();
         foreach ($data as $key => $value) {
             $article = $value;
