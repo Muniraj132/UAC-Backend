@@ -169,7 +169,7 @@ class CategoryController extends Controller
             if($data || $letterdata) {
                 return redirect()->route('admin.category.index')->with(['type' => 'error', 'message' => 'Cannot delete the category. It has posts associated with it..']);
          }else{
-            dd('in');
+           
                 $category = Category::findOrFail($id);
                 $category->getSlug()->forceDelete();
                 $category->delete();
