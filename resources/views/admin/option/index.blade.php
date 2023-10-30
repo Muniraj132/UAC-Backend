@@ -38,19 +38,19 @@
                             <div class="card-body">
                                 <div class="form-group row">
                                     <label for="title" class="col-md-3">{{ __('main.Site name') }}</label>
-                                    <input type="text" class="form-control form-control-sm col-md-9" value="{{old('favicon') ?? $option['title'] ?? ''}}" id="title" name="title">
+                                    <input type="text" class="form-control form-control-sm col-md-9" value="{{old('favicon') ?? $option['OP_title'] ?? ''}}" id="title" name="title">
                                 </div>
                                 <div class="form-group row">
                                     <label for="headcss" class="col-md-3">{{ __('main.Header CSS') }}</label>
-                                    <textarea type="text" class="form-control form-control-sm col-md-9" id="headcss" name="headcss" rows="10">{{old('headcss') ?? $option['headcss'] ?? ''}}</textarea>
+                                    <textarea type="text" class="form-control form-control-sm col-md-9" id="headcss" name="headcss" rows="10">{{old('headcss') ?? $option['OP_headcss'] ?? ''}}</textarea>
                                 </div>
                                 <div class="form-group row">
                                     <label for="headjs" class="col-md-3">{{ __('main.Header JS') }}</label>
-                                    <textarea type="text" class="form-control form-control-sm col-md-9" id="headjs" name="headjs" rows="10">{{old('headjs') ?? $option['headjs'] ?? ''}}</textarea>
+                                    <textarea type="text" class="form-control form-control-sm col-md-9" id="headjs" name="headjs" rows="10">{{old('headjs') ?? $option['OP_headjs'] ?? ''}}</textarea>
                                 </div>
                                 <div class="form-group row">
                                     <label for="footerjs" class="col-md-3">{{ __('main.Footer JS') }}</label>
-                                    <textarea type="text" class="form-control form-control-sm col-md-9" id="footerjs" name="footerjs" rows="10">{{old('footerjs') ?? $option['footerjs'] ?? ''}}</textarea>
+                                    <textarea type="text" class="form-control form-control-sm col-md-9" id="footerjs" name="footerjs" rows="10">{{old('footerjs') ?? $option['OP_footerjs'] ?? ''}}</textarea>
                                 </div>
                             </div>
                         </div>
@@ -60,8 +60,13 @@
                             <div class="card-header">
                                 <label for="media_img">{{ __('main.Logo') }}</label>
                             </div>
+                            @php
+                            use App\Models\Media;
+                            $logo = Media::where('id',$option['OP_logo'])->first();
+                            $favicon = Media::where('id',$option['OP_favicon'])->first();
+                            @endphp
                             <div class="card-body text-center">
-                                <img src="{{ old('logo') ?? $option['logo'] ?? ''}}" alt="" id="logo_img" style="max-width: 100%">
+                                <img src="{{ old('logo') ?? $logo->getUrl('thumb') ?? ''}}" alt="" id="logo_img" style="max-width: 100%">
                             </div>
                             <div class="card-footer">
                                 <a href="javascript:void(0);" class="btn btn-xs btn-primary float-left" id="logochoose">{{ __('main.Choose Image') }}</a>
@@ -73,7 +78,7 @@
                                 <label for="media_img">{{ __('main.Favicon') }}</label>
                             </div>
                             <div class="card-body text-center">
-                                <img src="{{ old('favicon') ?? $option['favicon'] ?? ''}}" alt="" id="fav_img" style="max-width: 100%">
+                                <img src="{{ old('favicon') ?? $favicon->getUrl('thumb') ?? ''}}" alt="" id="fav_img" style="max-width: 100%">
                             </div>
                             <div class="card-footer">
                                 <a href="javascript:void(0);" class="btn btn-xs btn-primary float-left" id="favchoose">{{ __('main.Choose Image') }}</a>

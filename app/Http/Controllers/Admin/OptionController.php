@@ -15,12 +15,15 @@ class OptionController extends Controller
         $option = [];
         foreach (Option::where('key', 'LIKE', 'OP_%')->get() as $op) {
             $option[$op->key] = $op->value;
+
         }
+     
         return view('admin.option.index', compact('option'));
     }
 
     public function update(Request $request)
     {
+        // dd($request->all());
         foreach ($request->except(['_token']) as $key => $value) {
             if ($key == 'logo' || $key == 'favicon') {
                 $option = Option::where('key', 'OP_' . $key)->first();
