@@ -164,8 +164,8 @@ function clearInput(id) {
 }
 
 function validate(e) {
-    if (confirm("Are you sure you want to delete this item?")) alert();
-    $("#delete_" + e).submit();
+    if (confirm("Are you sure you want to delete this item?"))
+        $("#delete_" + e).submit();
 }
 
 $(function () {

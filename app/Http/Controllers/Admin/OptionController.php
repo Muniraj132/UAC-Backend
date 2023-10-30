@@ -54,13 +54,14 @@ class OptionController extends Controller
 
     public function social(Request $request)
     {
-        $socials = Option::where('key', '=', 'OP_social')->where('language', '=', 'tr')->first();
+        $socials = Option::where('key', '=', 'social')->where('language', '=', 'tr')->first();
         $socials != null ? $socials = unserialize($socials->value) : $socials = [];
         return view('admin.option.social', compact('socials'));
     }
 
     public function socialUpdate(Request $request)
     {
+       
         $socials = Option::where('key', '=', 'social')->where('language', '=', $request->language)->first();
         $socials != null ? $socials->update(['value' => serialize($request->social)]) : $socials = Option::create(['key' => 'social', 'value' => serialize($request->social), 'language' => $request->language]);
         $socials = unserialize($socials->value);
