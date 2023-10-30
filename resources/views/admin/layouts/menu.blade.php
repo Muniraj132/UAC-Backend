@@ -192,6 +192,12 @@
               <p>{{ __('main.Slides') }}</p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="{{ route('admin.ourteam.index') }}" class="nav-link @if(Request::segment(2)=="ourteam") active @endif">
+                <i class="fas fa-users nav-icon"></i>
+              <p>{{ __('main.ourteam') }}</p>
+            </a>
+          </li>
           {{-- <li class="nav-item">
             <a href="{{ route('admin.comment.index') }}" class="nav-link @if(Request::segment(2)=="comment") active @endif">
                 <i class="fas fa-comments nav-icon"></i>
@@ -227,7 +233,7 @@
                 </li>
             </ul>
           </li> --}}
-          {{-- <li class="nav-item has-treeview @if(Request::segment(2)=="option" ) menu-open @endif">
+        <li class="nav-item has-treeview @if(Request::segment(2)=="option" ) menu-open @endif">
             <a href="{{ route('admin.option.index') }}" class="nav-link @if(Request::segment(2)=="option") active @endif">
                 <i class=" nav-icon fas fa-cog"></i>
                 <p>
@@ -279,7 +285,7 @@
                   </a>
                 </li>
             </ul>
-          </li> --}}
+          </li>
          
 
           <li class="nav-item">

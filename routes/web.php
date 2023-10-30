@@ -41,6 +41,15 @@ Route::prefix('admin')->name('admin.')->middleware('isAdmin')->group(function ()
     Route::get('/newsletter/delete/{id}', [App\Http\Controllers\Admin\NewsletterController::class, 'delete'])->name('newsletter.delete');
     Route::get('/newsletter/recover/{id}', [App\Http\Controllers\Admin\NewsletterController::class, 'recover'])->name('newsletter.recover');
     Route::resource('/newletter', 'App\Http\Controllers\Admin\NewsletterController');
+
+    Route::get('/ourteam/switch', [App\Http\Controllers\Admin\OurteamController::class, 'switch'])->name('ourteam.switch');
+    Route::get('/ourteam/trash', [App\Http\Controllers\Admin\OurteamController::class, 'trash'])->name('ourteam.trash');
+    Route::get('/ourteam/delete/{id}', [App\Http\Controllers\Admin\OurteamController::class, 'delete'])->name('ourteam.delete');
+    Route::get('/ourteam/recover/{id}', [App\Http\Controllers\Admin\OurteamController::class, 'recover'])->name('ourteam.recover');
+    Route::resource('/ourteam', 'App\Http\Controllers\Admin\OurteamController');
+
+
+
     Route::get('/page/switch', [App\Http\Controllers\Admin\PageController::class, 'switch'])->name('page.switch');
     Route::get('/page/trash', [App\Http\Controllers\Admin\PageController::class, 'trash'])->name('page.trash');
     Route::get('/page/delete/{id}', [App\Http\Controllers\Admin\PageController::class, 'delete'])->name('page.delete');

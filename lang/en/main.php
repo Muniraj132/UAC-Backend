@@ -78,6 +78,15 @@ return [
     'Editnewsletter' => 'Edit News letter',
     'newsletter Recycle' => 'Newsletter Recycle',
 
+
+    'ourteam' => 'Our Team',
+    // 'ourteams' => 'Our Teams',
+    'Allteam' => 'All News letter',
+    'Addteam' => 'Add Team',
+    'Editteam' => 'Edit Team',
+    'team Recycle' => 'Newsletter Recycle',
+
+
     'Category' => 'Category',
     'Categories' => 'Categories',
     'Add New Category' => 'Add New Category',
@@ -88,6 +97,7 @@ return [
 
     'Comment' => 'Comment',
     'Comments' => 'Comments',
+    'ourteam' => 'Our Teams',
     'Author' => 'Author',
     'Contact Request' => 'Contact Request',
 
