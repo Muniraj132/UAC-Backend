@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Ourteam;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\ContactFormMail;
@@ -241,9 +242,43 @@ class ApiController extends Controller
         }
     }
 
-    public function getteam($id){
+    public function getteam(){
 
         
+
+        $team = Ourteam::select(
+            'ourteams.title',
+            'ourteams.id',
+            'ourteams.content',
+            'ourteams.media_id',
+            'ourteams.created_at',
+            'categories.title as category_name'
+        )
+            ->leftJoin('categories', 'ourteams.category_id', '=', 'categories.id')
+            ->where('ourteams.status', 1)
+            // ->where('ourteams.category_id', 8)
+            ->orderBy('id','desc')
+            ->get();
+            $team->each(function ($item) {
+
+                $mediaUrl = null;
+                $media = Media::find($item->media_id);
+              
+                  if ($media) {
+                      $mediaUrl = $media->getUrl('thumb');
+                  }
+                  if($item->media_id != 1){
+                      $item->image = $mediaUrl;
+                  }
+                  
+                  $item->date = $item->created_at->format('d-m-Y');
+            });
+       
+        return response()->json([
+            'success' => true,
+            'message' => 'Data retrieved successfully',
+            'data' => $team,
+        ]);
     }
 
 }
