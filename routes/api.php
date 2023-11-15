@@ -25,3 +25,4 @@ Route::get('/get/Newsletter',[ApiController::class,'getnewsletter']);
 Route::get('/get/Pages',[ApiController::class,'getpage']);
 Route::get('/get/slidebar',[ApiController::class,'getslidebar']);
 Route::get('get/gallery_images',[ApiController::class,'getGalleryimages']);
+Route::get('get/teammembers',[ApiController::class,'getteam']);

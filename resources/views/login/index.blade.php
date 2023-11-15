@@ -12,14 +12,15 @@
   <link rel="stylesheet" href="{{asset('admin')}}/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
   <link rel="stylesheet" href="{{asset('admin')}}/dist/css/adminlte.min.css">
 </head>
-<body class="hold-transition login-page" style="background-color: #21d7d9;" >
+<body class="hold-transition login-page" style="background-color: rgb(17 38 134);" >
 <div class="login-box">
     <div class="register-logo">
       <img src="{{asset('admin')}}/img/leftlogo.png" alt="UAC-logo" style="width: 30%;"><br>
      
      <center><a href="{{url('/')}}" style="color: white
       ; font-weight:500;"><b>National Coordination Council India</b>
-      <img src="{{asset('admin')}}/img/12.gif" style="width: 10%;" alt=""></a></center>
+      {{-- <img src="{{asset('admin')}}/img/12.gif" style="width: 10%;" alt=""> --}}
+    </a></center>
     </div>
   <div class="card">
     <div class="card-body login-card-body">

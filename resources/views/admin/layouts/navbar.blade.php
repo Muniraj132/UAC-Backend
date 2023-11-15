@@ -1,6 +1,6 @@
 <style>
   .dropdown-item{
-    background-color: #17a2b8;
+    background-color: rgb(17 38 134);
   }
   .dropdown-item:focus, .dropdown-item:hover{
     background-color: #ffd700;
@@ -10,9 +10,9 @@
     <!-- Left navbar links -->
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars" style="color: #47a3a5;"></i></a>
+        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars" style="color: rgb(17 38 134);"></i></a>
       </li>
-      <li class="nav-item dropdown d-none d-sm-inline-block" style="color: #47a3a5;">
+      <li class="nav-item dropdown d-none d-sm-inline-block" style="color: rgb(17 38 134);">
         <a id="dropdownSubMenu2" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-item dropdown-toggle">{{ __('main.Add New') }}</a>
         <ul aria-labelledby="dropdownSubMenu2" class="dropdown-menu border-0 shadow">
             <li><a href="{{route('admin.page.create')}}" class="dropdown-item">{{ __('main.Page') }}</a></li>

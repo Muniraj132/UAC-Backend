@@ -241,4 +241,9 @@ class ApiController extends Controller
         }
     }
 
+    public function getteam($id){
+
+        
+    }
+
 }

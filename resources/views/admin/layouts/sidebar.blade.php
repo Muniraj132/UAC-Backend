@@ -17,7 +17,7 @@
   width: min(400px , 100%);
   border-radius: 10px;
   background-color: #8ec5fc;
-  background-image: linear-gradient(62deg, #21d7d9 0%, #3d4647 100%);
+  background-image: linear-gradient(62deg, rgb(17 38 134) 0%, #3d4647 100%);
   transition-property: opacity, transform;
   transition-duration: calc(700ms);
   transition-delay: 0s;
