@@ -1,15 +1,4 @@
-# I referred from
 
-click here  <a href="https://github.com/hsdmr/laravel-admin/blob/main/README-tr.md">admin-backend</a>.
-
-
-
-
-
-## Download with git
-
-
-If git is not installed on your computer, install the appropriate one for your operating system from this <a href="https://git-scm.com/downloads">link</a>
 
 - Open the terminal screen and paste the code below and run it.
 
