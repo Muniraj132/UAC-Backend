@@ -115,14 +115,15 @@ class OurteamController extends Controller
         }
     }
 
-    public function update(Request $request, Ourteam $ourteam)
+    public function update(Request $request, $id)
     {
         
-        // dd($request->all());
-        $data =$ourteam->all();
-        foreach ($data as $key => $value) {
-            $article = $value;
-        }
+        $article =Ourteam::where('id' ,$id)->first();
+
+        // foreach ($data as $key => $value) {
+        //     $article = $value;
+        // }
+       
         $request->validate([
             'title' => 'required|min:3|max:255',
             'slug' => 'required|min:3|max:255',

@@ -75,11 +75,11 @@
                                             <a href="{{ route('admin.ourteam.edit', $article->id) }}"
                                                 title="{{ __('main.Edit') }}" class="btn btn-primary btn-xs"><i
                                                     class="fas fa-pencil-alt"></i></a>
-                                            <a href="javascript:void(0)"
+                                            <a href="{{ route('admin.ourteam.delete', $article->id) }}"
                                                 onclick="validate({{ $article->id }})" title="{{ __('main.Delete') }}"
                                                 class="btn btn-danger btn-xs"><i class="far fa-times-circle"></i></a>
                                         </td>
-                                    </tr>
+                                    </tr> 
                                 @endforeach
                             </tbody>
                         </table>

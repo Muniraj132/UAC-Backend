@@ -102,7 +102,12 @@
               </li>
             </ul>
           </li>
-
+          <li class="nav-item">
+            <a href="{{ route('admin.category.index') }}" class="nav-link @if(Request::segment(2)=="category") active @endif">
+                <i class="fas fa-arrow-right nav-icon"></i>
+              <p>{{ __('main.Category') }}</p>
+            </a>
+          </li>
           <li class="nav-item has-treeview @if(Request::segment(2)=="page") menu-open @endif">
             <a href="{{ route('admin.page.index') }}" class="nav-link @if(Request::segment(2)=="page") active @endif">
                 <i class="nav-icon fas fa-copy"></i>
@@ -148,13 +153,6 @@
                   </a>
                 </li>
             </ul>
-          </li>
-          
-          <li class="nav-item">
-            <a href="{{ route('admin.category.index') }}" class="nav-link @if(Request::segment(2)=="category") active @endif">
-                <i class="fas fa-arrow-right nav-icon"></i>
-              <p>{{ __('main.Category') }}</p>
-            </a>
           </li>
           <li class="nav-item">
             <a href="{{ route('admin.newletter.index') }}" class="nav-link @if(Request::segment(2)=="newletter") active @endif">

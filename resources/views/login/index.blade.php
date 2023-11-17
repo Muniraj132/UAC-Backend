@@ -5,26 +5,44 @@
   {{-- <link rel="icon" sizes="48x48" href="{{App\Models\File::find(App\Models\Option::where('key','=','favicon')->first()->value)->getMedia()->first()->getUrl('thumb')}}" type="image/x-icon" /> --}}
   <link rel="icon" href="{{asset('admin')}}/img/leftlogo.png" type="image/x-icon" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>St.Charles | {{ __('main.Login') }}</title>
+  <title>National Coordination Council India | {{ __('main.Login') }}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <link rel="stylesheet" href="{{asset('admin')}}/plugins/fontawesome-free/css/all.min.css">
   <link rel="stylesheet" href="{{asset('admin')}}/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
   <link rel="stylesheet" href="{{asset('admin')}}/dist/css/adminlte.min.css">
+  <style>
+    .wrapper {
+    width: 420px;
+    background: transparent;
+    border:2px solid rgba(255, 255, 255, .2);
+    backdrop-filter:blur(20px);
+    box-shadow: 0 0 10px rgba(0 , 0 , 0 , .2);
+    color: #fff;
+    border-radius: 10px;
+    padding: 30px 40px;
+
+}
+/* .body{
+  background:url(https://www.freecodecamp.org/news/content/images/size/w2000/2022/09/jonatan-pie-3l3RwQdHRHg-unsplash.jpg);
+  background-size: cover;
+} */
+  </style>
 </head>
-<body class="hold-transition login-page" style="background-color: rgb(17 38 134);" >
+<body class="hold-transition login-page body" style="background-color: rgb(17 38 134);" >
 <div class="login-box">
     <div class="register-logo">
       <img src="{{asset('admin')}}/img/leftlogo.png" alt="UAC-logo" style="width: 30%;"><br>
      
      <center><a href="{{url('/')}}" style="color: white
-      ; font-weight:500;"><b>National Coordination Council India</b>
+      ; font-weight: 700;
+    font-family: serif;"><b>National Coordination Council India</b>
       {{-- <img src="{{asset('admin')}}/img/12.gif" style="width: 10%;" alt=""> --}}
     </a></center>
     </div>
-  <div class="card">
-    <div class="card-body login-card-body">
-      <p class="login-box-msg">{{ __('main.Sign in to start your session') }}</p>
+  <div class="card" >
+    <div class="card-body login-card-body wrapper">
+      <p class="login-box-msg" style="color: rgb(17 38 134)">{{ __('main.Sign in to start your session') }}</p>
         @if ($errors->any()) <div class="alert alert-danger">{{$errors->first()}}</div> @endif
       <form action="{{route('login.check')}}" method="post">
         @csrf
@@ -48,7 +66,7 @@
           <div class="col-8">
             <div class="icheck-primary">
               <input type="checkbox" id="remember">
-              <label for="remember">
+              <label for="remember" style="color: rgb(17 38 134)">
                 {{ __('main.Remember me') }}
               </label>
             </div>

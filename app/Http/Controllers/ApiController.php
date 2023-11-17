@@ -218,8 +218,9 @@ class ApiController extends Controller
 
     public function getGalleryimages(){
 
-        $Image =Image::orderBy('id','desc')->get();
-
+        $Image =Image::select('images.id','images.title','images.alt','images.path','images.created_at','categories.title as categoryname')->leftJoin('categories' ,'categories.id','=','images.category_id')
+        ->orderBy('images.id','desc')->get();
+// dd( $Image);
         $imagesData = [];
         
         foreach ($Image as $key => $image) {
@@ -229,6 +230,7 @@ class ApiController extends Controller
                 'alt_tag' => $image->alt,
                 'image' => asset($image->path),
                 'date' =>  $image->created_at->format('d-m-Y'),
+                'categoryname' => $image->categoryname,
             ]; 
             $imagesData[] = $data; 
         }
@@ -243,8 +245,6 @@ class ApiController extends Controller
     }
 
     public function getteam(){
-
-        
 
         $team = Ourteam::select(
             'ourteams.title',
