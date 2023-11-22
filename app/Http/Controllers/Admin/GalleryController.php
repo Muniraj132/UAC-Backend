@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Log;
 use App\Models\Image;
@@ -32,7 +33,8 @@ class GalleryController extends Controller
     public function create()
     {
         try {
-            return view("admin.gallery.create");
+            $categories = Category::where('type','=','article-category')->get();
+            return view("admin.gallery.create", compact("categories"));
         } catch (Throwable $th) {
             Log::create([
                 'model' => 'file',
@@ -53,7 +55,8 @@ class GalleryController extends Controller
                     $newImage = new Image;
                     $newImage->name = $image;
                     $newImage->path = 'uploads/'.$image;
-                    // $newImage->item_id = $request->item_id; 
+                    $newImage->category_id = $request->category_id; 
+                    $newImage->title = $request->title; 
                     $newImage->save();
                 }
                 return redirect()->route('admin.gallery.index')->with(['type' => 'success', 'message' =>'Medias saved.']);
@@ -95,7 +98,8 @@ class GalleryController extends Controller
         try {
             // dd('fg');    
             $media = Image::find($id);
-            return view('admin.gallery.edit',compact('media'));
+            $categories = Category::all();
+            return view('admin.gallery.edit',compact('media','categories'));
         } catch (Throwable $th) {
             Log::create([
                 'model' => 'file',
@@ -115,6 +119,7 @@ class GalleryController extends Controller
             $media = Image::find($id);
             $media->title = $request->title;
             $media->alt = $request->alt;
+            $media->category_id = $request->category_id;
             $media->save();
             return redirect()->route('admin.gallery.index')->with(['type' => 'success', 'message' =>'Media is updated.']);
         } catch (Throwable $th) {

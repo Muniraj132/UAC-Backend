@@ -37,7 +37,7 @@
                             $id = $media->id;
                             $media = $media->path;
                         @endphp
-                            @if ($id!=1)
+                            @if ($id)
                             <div class="thumbnail">
                                 <a href="{{ route('admin.gallery.show',$id) }}">
                                     <img id="{{ $id }}" src="{{asset($media) }}">

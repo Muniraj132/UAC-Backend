@@ -60,6 +60,16 @@
                                             <label for="url">{{ __('main.Url') }}</label>
                                             <input type="text" class="form-control form-control-sm" disabled="" value="{{ asset($medias) }}" id="url" name="url">
                                         </div>
+                                        <div class="form-group">
+                                            <label for="title">{{ __('main.Category') }}</label>
+                                            <select class="form-control form-control-sm" id="category" name="category_id">
+                                                <option value="0"></option>
+                                                @foreach ($categories as $category)
+                                                <option value="{{ $category->id }}" @if (old('category') ?? $media->category_id == $category->id) selected @endif>
+                                                        {{ $category->title }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
                                         <button type="submit" class="btn btn-success btn-xs float-right">{{ __('main.Update') }}</button>
                                     </form>
                                 </div>

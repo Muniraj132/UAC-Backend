@@ -33,9 +33,31 @@
                 <form action="{{route('admin.gallery.store')}}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="card-body">
-                        <div class="needsclick dropzone" id="document-dropzone">
-                        </div>
+                      <div class="form-group">
+                        <label for="title">{{ __('main.Title') }}</label>
+                          <input type="text"
+                              class="form-control form-control-sm @error('title') is-invalid @enderror"
+                              id="title" name="title" value="{{ old('title') }}">
+                          @error('title') <small class="ml-auto text-danger">{{ __('main.titleError') }}</small> @enderror
                     </div>
+                      <div class="form-group">
+                        <label for="title">{{ __('main.Category') }}</label>
+                          <select class="form-control form-control-sm" id="category" name="category_id">
+                              <option value="0"></option>
+                              @foreach ($categories as $category)
+                                  <option value="{{ $category->id }}" @if (old('category_id') == $category->id) selected @endif>
+                                      {{ $category->title }}</option>
+                              @endforeach
+                          </select>
+                      </div>
+                  </div>
+                    <div class="card-body">
+                      <div class="form-group">
+                        <label for="title" >Upload Images</label>
+                      <div class="needsclick dropzone" id="document-dropzone">
+                      </div>
+                    </div>  
+                  </div>
                     <div class="card-footer">
                       <a href="{{ route('admin.gallery.index') }}" class="btn btn-danger">Cancel</a>
                         <button class="btn btn-success text-center px-5" type="submit" id="submit">{{ __('main.Upload') }}</button>
